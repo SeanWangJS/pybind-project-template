@@ -1,5 +1,7 @@
-build/
-.vscode/
+build/*
+.vscode/*
+__pycache__/*
+*.egg-info/*
 
-__pycache__/
 *.pyi
+*.so
