@@ -30,7 +30,7 @@ def main(args):
     build_run(f"cmake --build {build_dir}")
 
     ## Copy the pybind library to the package directory
-    pkg_dir = PROJECT_DIR / "opscpp"
+    pkg_dir = PROJECT_DIR / "ops_pybind"
 
     def get_pybind_lib():
         pybind_build_dir = build_dir / "pybind"

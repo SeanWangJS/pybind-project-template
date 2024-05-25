@@ -1,11 +1,11 @@
 from setuptools import setup
 
 setup(
-    name="opscpp",
+    name="ops-pybind",
     version="0.0.1",
     author="seanwang",
     description="A Sample Package for C++ Binding with Pybind11",
-    packages=["opscpp"],
+    packages=["ops_pybind"],
     include_package_data=True,
-    package_data={"opscpp": ["*.pyi", "*.so"]},
+    package_data={"ops_pybind": ["*.pyi", "*.so"]},
 )
