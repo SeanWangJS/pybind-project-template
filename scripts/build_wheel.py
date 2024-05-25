@@ -3,7 +3,6 @@ from pathlib import Path
 from subprocess import run
 from functools import partial
 from shutil import copy
-import glob
 import sys
 from contextlib import contextmanager
 
@@ -36,7 +35,6 @@ def main(args):
     def get_pybind_lib():
         pybind_build_dir = build_dir / "pybind"
         pybind_lib = list(pybind_build_dir.glob("bindings.*.so"))
-        # pybind_lib = glob.glob(f"{pybind_build_dir}/bindings.*.so")
         assert len(pybind_lib) == 1, f"Exactly one pybind library should be present: {pybind_lib}"
         return pybind_lib[0]
 
@@ -45,6 +43,13 @@ def main(args):
     ## Generate the pyi file
     with working_directory(pkg_dir):
         build_run(f"\"{sys.executable}\" -m pybind11_stubgen -o . bindings")
+
+    ## Build the wheel
+    dist_dir = PROJECT_DIR / "wheels"
+    dist_dir.mkdir(exist_ok=True)
+    build_run(
+        f"\"{sys.executable}\" -m build {PROJECT_DIR} --skip-dependency-check --no-isolation --wheel --outdir {dist_dir}"
+    )
 
 if __name__ == "__main__":
     args = None
