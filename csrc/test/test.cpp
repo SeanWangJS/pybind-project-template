@@ -18,6 +18,8 @@ TEST(ops, test_add_float) {
     float b = 2.0;
     float c = ops::add<float>(a, b);
 
+    printf("c: %f\n", c);
+
     EXPECT_EQ(c, a + b);
 
 }

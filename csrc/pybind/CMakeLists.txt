@@ -13,8 +13,11 @@ endif()
 
 find_package(pybind11 REQUIRED)  
 
+message(STATUS "SHARED_TARGET: ${SHARED_TARGET}")
+
 set(OPS_PYBIND_MODULE bindings) 
 add_definitions(-DOPS_PYBIND_MODULE=${OPS_PYBIND_MODULE}) 
 
 set(SRCS bindings.cpp)
 pybind11_add_module(${OPS_PYBIND_MODULE} ${SRCS}) 
+target_link_libraries(${OPS_PYBIND_MODULE} PRIVATE ${SHARED_TARGET}) ## Link to c++ shared library, ${SHARED_TARGET} is defined in the parent CMakeLists.txt
