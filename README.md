@@ -1,3 +1,4 @@
+!(GitHub CI)[https://github.com/SeanWangJS/pybind-project-template/actions/workflows/c-cpp.yml/badge.svg]
 # A Simple Project Template for Python and C++ Mixed Programming
 
 ## Motivation
