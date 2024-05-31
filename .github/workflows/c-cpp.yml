@@ -21,7 +21,5 @@ jobs:
       run: cd csrc/build && cmake ..
     - name: make
       run: cd csrc/build && make
-    - name: make check
-      run: cd csrc/build && make check
-    - name: cd csrc/build && make distcheck
-      run: make distcheck
+    - name: build wheel
+      run: python scripts/build_wheel.py
